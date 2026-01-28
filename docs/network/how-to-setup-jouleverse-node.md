@@ -17,7 +17,7 @@
 
 1. 准备keystore账户，用户签名出块
 2. 准备独立云主机、独立IP，最低配置（2核4G内存40G硬盘），Ubuntu 20.04 Linux带docker，防火墙打开30311/tcp和30311/udp （见证节点请再打开8501/tcp）【注意与testnet端口号皆有不同】
-3. 下载节点软件包 jouleverse-node-20260126.tar.gz ，并启动节点
+3. 下载节点软件包 jouleverse-node-20260129.tar.gz ，并启动节点
 4. 【仅记账节点】在节点群里通知其他节点投票，批准自己节点入网
 5. 入网后，填写主网节点信息采集表，通知审计负责人安排审核
 
@@ -59,20 +59,20 @@ sudo docker pull ubuntu:20.04
 ### 下载节点软件包
 
 ```
-# 从云主机管理后台登陆云主机终端，从github repo下载rc 20260126版本的软件包
-wget https://github.com/Jouleverse/jouleverse-node/archive/refs/tags/jouleverse-node-20260126.tar.gz
+# 从云主机管理后台登陆云主机终端，从github repo下载rc 20260129版本的软件包
+wget https://github.com/Jouleverse/jouleverse-node/archive/refs/tags/jouleverse-node-20260129.tar.gz
 
 # 注：如果无法下载，可换用镜像
-wget http://bootnode.jnsdao.com/mirror/jouleverse-node-20260126.tar.gz
+wget http://bootnode.jnsdao.com/mirror/jouleverse-node-20260129.tar.gz
 
 # 检查shasum
-sha256sum jouleverse-node-20260126.tar.gz
+sha256sum jouleverse-node-20260129.tar.gz
 
-# 结果应该是 0b77929dfda297d0eb95394c26df17e076ffd8894c429e83d343b5e642490f5c  jouleverse-node-20260126.tar.gz
+# 结果应该是 2cd7b68b922914e9bfc5e3dbeb0ac13b34b8f1bae782bdb53aaf6a5d0c260933  jouleverse-node-20260129.tar.gz
 # 这证明软件包未损坏或被篡改。
 
 # 解压缩并更改目录名
-tar xvfz jouleverse-node-20260126.tar.gz && mv jouleverse-node-jouleverse-node-20260126 jouleverse-node-20260126
+tar xvfz jouleverse-node-20260129.tar.gz && mv jouleverse-node-jouleverse-node-20260129 jouleverse-node-20260129
 ```
 
 ### 设置脚本路径便捷访问（只需要做一次）
@@ -81,10 +81,10 @@ A. 如果你要搭建的是见证节点：
 
 ```
 # 为见证节点管理脚本设置执行权限
-chmod +x ~/jouleverse-node-20260126/scripts/jnode_witness
+chmod +x ~/jouleverse-node-20260129/scripts/jnode_witness
 
 # 添加别名快捷方式
-echo "alias jnode='~/jouleverse-node-20260126/scripts/jnode_witness'" >> ~/.bash_profile
+echo "alias jnode='~/jouleverse-node-20260129/scripts/jnode_witness'" >> ~/.bash_profile
 
 # 让快捷方式立即生效
 source ~/.bash_profile
@@ -99,10 +99,10 @@ B. 如果你要搭建的是记账节点：
 
 ```
 # 为记账节点管理脚本设置执行权限
-chmod +x ~/jouleverse-node-20260126/scripts/jnode_miner
+chmod +x ~/jouleverse-node-20260129/scripts/{jnode_miner,miner_init.sh,clef_entrypoint.sh}
 
 # 添加别名快捷方式
-echo "alias jnode='~/jouleverse-node-20260126/scripts/jnode_miner'" >> ~/.bash_profile
+echo "alias jnode='~/jouleverse-node-20260129/scripts/jnode_miner'" >> ~/.bash_profile
 
 # 让快捷方式立即生效
 source ~/.bash_profile
@@ -145,7 +145,7 @@ jnode status
 # 检查节点版本
 jnode console admin.nodeInfo | grep name
 
-# 上述命令应输出结果：  name: "Geth/v1.11.4-jouleverse-9dfa34e5-20240229/tag-w20260126/linux-amd64/go1.19.1",
+# 上述命令应输出结果：  name: "Geth/v1.11.4-jouleverse-9dfa34e5-20240229/tag-w20260129/linux-amd64/go1.19.1",
 ```
 
 #### A2：升级见证节点
@@ -175,7 +175,7 @@ jnode status
 # 检查节点版本
 jnode console admin.nodeInfo | grep name
 
-# 上述命令应输出结果：  name: "Geth/v1.11.4-jouleverse-9dfa34e5-20240229/tag-w20260126/linux-amd64/go1.19.1",
+# 上述命令应输出结果：  name: "Geth/v1.11.4-jouleverse-9dfa34e5-20240229/tag-w20260129/linux-amd64/go1.19.1",
 ```
 
 ### 见证节点审计入网
@@ -288,25 +288,23 @@ jnode init
 
 # 注意观察界面提示信息，并按照提示信息小心操作：
 # 
-# [INFO] 步骤1: 初始化geth数据目录 （✅自动完成，无需操作）
-# [INFO] 步骤2: 复制keystore文件（✅自动完成，无需操作）
-# [INFO] 步骤3: 初始化clef签名机 （❗️需要按提示正确输入信息）
+# [INFO] 步骤1: 初始化clef签名机
+# [INFO] 步骤1.1: 初始化Clef加密存储区 （❗️需要按提示正确输入信息）
 # 请按照提示操作:
-# 1. 输入 'ok' 确认初始化
-# 2. 输入并确认clef加密密码（两次）
-# [INFO] 步骤4: 设置账户密码（❗️需要按提示正确输入信息）
+# 1. 输入并确认clef加密密码（两次）
+# [INFO] 步骤1.2: 设置账户密码（❗️需要按提示正确输入信息）
 # 请按照提示操作:
-# 1. 输入 'ok' 确认
-# 2. 输入keystore解锁密码（两次）
-# 3. 输入clef加密密码
-# [INFO] 步骤5: 验证规则脚本（❗️需要按提示正确输入信息）
-# 请按照提示操作:
-# 1. 输入 'ok' 确认
+# 1. 输入keystore解锁密码（两次）
 # 2. 输入clef加密密码
+# [INFO] 步骤1.3: 验证规则脚本（❗️需要按提示正确输入信息）
+# 请按照提示操作:
+# 1. 输入clef加密密码
+# [INFO] 步骤1: 初始化geth数据目录
+# [INFO] 步骤1.1: 初始化区块链 （✅自动完成，无需操作）
+# [INFO] 步骤2.2: 复制keystore文件（✅自动完成，无需操作）
 #
 # ==========================================
 # [INFO] 所有初始化步骤已完成！
-# [INFO] 可以使用以下命令退出docker: exit
 # ==========================================
 # docker已退出
 # 节点初始化完成
@@ -327,14 +325,14 @@ jnode status
 # 检查节点版本
 jnode console admin.nodeInfo | grep name
 
-# 上述命令应输出结果：  name: "Geth/v1.11.4-jouleverse-9dfa34e5-20240229/tag-m20260126/linux-amd64/go1.19.1",
+# 上述命令应输出结果：  name: "Geth/v1.11.4-jouleverse-9dfa34e5-20240229/tag-m20260129/linux-amd64/go1.19.1",
 ```
 
 #### B2：升级记账节点
 
 Note: **警告：如果只是重启/升级节点而不是第一次搭建，请不要重新初始化数据目录！否则可能会造成节点信息变化，审计报错！**
 
-Note: 首次从2024版节点包首次升级到2026版节点包，需要保留数据但第一次初始化clef签名机，建议先停止节点（指令：jnode stop）、把原data数据目录改名为data.2024（指令：sudo mv ~/data ~/data.2024），然后按照新节点开始初始化（指令：jnode init），初始化完成后，把2024版数据复制恢复过来（指令：sudo cp -R ~/data.2024/mainnet ~/data/）
+Note: 首次从2024版节点包首次升级到2026版节点包，需要保留数据但第一次初始化clef签名机，建议先停止节点（指令：jnode stop）、备份data数据目录（指令：sudo cp -R ~/data ~/data.2024），然后按照新节点开始初始化（指令：jnode init）：<br>第一次警告“是否继续重新初始化？(y/N)”，回答y同意继续初始化；<br>按照提示信息完成Clef初始化；<br>然后，第二次警告“是否继续强制重新初始化Geth数据目录？(y/N)”直接回车跳过Geth初始化）
 
 ```
 # 首先，确认已经下载了新版本的节点软件包，并正确解压缩
@@ -361,7 +359,7 @@ jnode status
 # 检查节点版本
 jnode console admin.nodeInfo | grep name
 
-# 上述命令应输出结果：  name: "Geth/v1.11.4-jouleverse-9dfa34e5-20240229/tag-m20260126/linux-amd64/go1.19.1",
+# 上述命令应输出结果：  name: "Geth/v1.11.4-jouleverse-9dfa34e5-20240229/tag-m20260129/linux-amd64/go1.19.1",
 ```
 
 ### 记账节点审计入网
@@ -505,6 +503,7 @@ jnode console admin.nodeInfo
 
 ## 版本
 
+* 2.1 evan.j: 2026.1.29 节点包升级为rc 20260129 - 修复一些bug，改进脚本初始化，改进签名机安全策略
 * 2.0 evan.j: 2026.1.26 节点包升级为rc 20260126 - 集成clef签名机，全新管理脚本
 * 1.10 evan.j: 2024.3.1 节点包升级为rc 20240229 - 支持tag
 * 1.9 evan.j: 2024.1.24 增加对于重做数据的警告，以及更多指引
