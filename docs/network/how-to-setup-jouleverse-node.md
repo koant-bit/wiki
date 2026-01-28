@@ -68,7 +68,7 @@ wget http://bootnode.jnsdao.com/mirror/jouleverse-node-20260129.tar.gz
 # 检查shasum
 sha256sum jouleverse-node-20260129.tar.gz
 
-# 结果应该是 2cd7b68b922914e9bfc5e3dbeb0ac13b34b8f1bae782bdb53aaf6a5d0c260933  jouleverse-node-20260129.tar.gz
+# 结果应该是 66f5228b2f0fd6748f053270d98662258a8018a3999549a21fc5132d50cf4b73  jouleverse-node-20260129.tar.gz
 # 这证明软件包未损坏或被篡改。
 
 # 解压缩并更改目录名
