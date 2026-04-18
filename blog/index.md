@@ -1,9 +1,22 @@
 ## 2026年
 
+### 4月
+
+* 2026.04.02 [Jouleverse CGC会议纪要（2026.03.29）](2026/202604/2026-04-02-CGC20260329-meeting-minutes.md)
+
+### 3月
+
+* 2026.03.05 [Jouleverse CGC会议纪要（2026.03.01）](2026/202603/2026-03-05-CGC20260301-meeting-minutes.md)
+* 2026.03.11 [Jouleverse CGC会议纪要（2026.03.08）](2026/202603/2026-03-11-CGC20260308-meeting-minutes.md)
+* 2026.03.15 [PixelArtNFT使用说明](2026/202603/2026-03-15-PixelArtNFT-Instructions-for-Use.md)
+* 2026.03.20 [Jouleverse CGC会议纪要（2026.03.15）](2026/202603/2026-03-20-CGC20260315-meeting-minutes.md)
+* 2026.03.25 [Jouleverse CGC会议纪要（2026.03.22）](2026/202603/2026-03-25-CGC20260322-meeting-minutes.md)
+
 ### 2月
 
 * 2026.02.04 [Jouleverse节点包RC20260129测试发布](2026/202602/2026-02-04-node-package-20260129.md)
 * 2026.02.05 [Jouleverse CGC会议纪要（2026.02.01）](2026/202602/2026-02-05-CGC20260201-meeting-minutes.md)
+* 2026.02.11 [Jouleverse CGC会议纪要（2026.02.08）](2026/202602/2026-02-11-CGC20260201-meeting-minutes.md)
 
 ### 1月
 
