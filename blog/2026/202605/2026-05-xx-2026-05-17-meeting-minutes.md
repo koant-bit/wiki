@@ -1,10 +1,16 @@
 ##Jouleverse CGC 会议纪要（2026.05.17）
+
 会议回放 录制: Jouleverse CGC会议（2026.05.17）
+
 日期: 2026-05-17 14:00:52 
+
 录制文件：https://meeting.tencent.com/crm/KE3gopgdac 密码：ZQPB
 
+
 转写: 转写_Jouleverse CGC会议（2026.05.17）
+
 日期: 2026-05-17 13:59:46 
+
 转写文件：https://meeting.tencent.com/ctm/NQLrQJqyb3 密码：BHN6
 
 会议讨论了以下几个议题：1. 每周工作进展汇总，包括预定会议等；2. 教练的工作汇总，包括会议纪要汇总等；
@@ -157,6 +163,11 @@
 
 认为现在做任何简单的事情都挺不容易。 PoWh贡献名单 对本会议纪要有PoWh贡献的名单：
 
+
 会议预定： Koant J-0 会议主持兼书记员： 楼兰渔夫 J-4 
+
 CGC会议讨论区发言： Koant J-0、Bataroc J-67、如行 J-12 教链 J-25 微尘J-53 
-编辑： 如行 J-12 审校： Koant J-0
+
+编辑： 如行 J-12 
+
+审校： Koant J-0
